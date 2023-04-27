@@ -1,37 +1,37 @@
-import React, { SetStateAction } from 'react'
-import { Card, Text, Dropdown } from '@nextui-org/react'
-import { BookMetaData, TBookMeta } from '../types'
+import React from 'react'
+import { Card, Text } from '@nextui-org/react'
+import { TBookMeta } from '../types'
 
 interface BookPreviewProps {
 	bookData: TBookMeta
 }
 
-interface TBooksStatus {
-	selected: Set<string>
-	setSelected: React.Dispatch<SetStateAction<Set<string>>>
-	selectedItem: string
-}
-const BookStatus = ({ selected, setSelected, selectedItem }: TBooksStatus) => {
-	return (
-		<Dropdown>
-			<Dropdown.Button color='secondary' css={{ tt: 'capitalize' }} shadow>
-				{selectedItem}
-			</Dropdown.Button>
-			<Dropdown.Menu
-				aria-label='Single selection actions'
-				color='secondary'
-				disallowEmptySelection
-				selectionMode='single'
-				selectedKeys={selected}
-				onSelectionChange={setSelected}
-			>
-				<Dropdown.Item key='Plan To Read'>Plan To Read</Dropdown.Item>
-				<Dropdown.Item key='Inprogress'>Inprogress</Dropdown.Item>
-				<Dropdown.Item key='Completed'>Completed</Dropdown.Item>
-			</Dropdown.Menu>
-		</Dropdown>
-	)
-}
+// interface TBooksStatus {
+// 	selected: Set<string>
+// 	setSelected: React.Dispatch<SetStateAction<Set<string>>>
+// 	selectedItem: string
+// }
+// const BookStatus = ({ selected, setSelected, selectedItem }: TBooksStatus) => {
+// 	return (
+// 		<Dropdown>
+// 			<Dropdown.Button color='secondary' css={{ tt: 'capitalize' }} shadow>
+// 				{selectedItem}
+// 			</Dropdown.Button>
+// 			<Dropdown.Menu
+// 				aria-label='Single selection actions'
+// 				color='secondary'
+// 				disallowEmptySelection
+// 				selectionMode='single'
+// 				selectedKeys={selected}
+// 				onSelectionChange={setSelected}
+// 			>
+// 				<Dropdown.Item key='Plan To Read'>Plan To Read</Dropdown.Item>
+// 				<Dropdown.Item key='Inprogress'>Inprogress</Dropdown.Item>
+// 				<Dropdown.Item key='Completed'>Completed</Dropdown.Item>
+// 			</Dropdown.Menu>
+// 		</Dropdown>
+// 	)
+// }
 
 const BookPreview = ({ bookData }: BookPreviewProps) => {
 	const [selected, setSelected] = React.useState(new Set(['Plan To Read']))
@@ -44,11 +44,11 @@ const BookPreview = ({ bookData }: BookPreviewProps) => {
 	return (
 		<Card>
 			<div className='bookStatus'>
-				<BookStatus
+				{/* <BookStatus
 					selected={selected}
 					setSelected={setSelected}
 					selectedItem={selectedItem}
-				/>
+				/> */}
 			</div>
 			<Card.Body css={{ p: 0, m: 0 }}>
 				<Card.Image
