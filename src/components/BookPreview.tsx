@@ -34,12 +34,12 @@ interface BookPreviewProps {
 // }
 
 const BookPreview = ({ bookData }: BookPreviewProps) => {
-	const [selected, setSelected] = React.useState(new Set(['Plan To Read']))
+	// const [selected, setSelected] = React.useState(new Set(['Plan To Read']))
 
-	const selectedItem = React.useMemo(
-		() => Array.from(selected).join(', ').replaceAll('_', ' '),
-		[selected]
-	)
+	// const selectedItem = React.useMemo(
+	// 	() => Array.from(selected).join(', ').replaceAll('_', ' '),
+	// 	[selected]
+	// )
 
 	return (
 		<Card>
