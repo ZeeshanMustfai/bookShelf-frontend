@@ -65,7 +65,7 @@ export const AddBookModal = ({
 			aria-labelledby='modal-title'
 			open={open}
 			onClose={handleClose}
-			blur
+			css={{ overflow: 'visible' }}
 		>
 			<Modal.Header>
 				<Text id='modal-title' size={18}>

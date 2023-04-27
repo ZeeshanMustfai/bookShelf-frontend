@@ -7,7 +7,7 @@ export interface BookMetaData {
 }
 
 export interface TBookMeta{
-	id: string
+	_id: string
 	title: string
 	photo: string
 	authorName: string

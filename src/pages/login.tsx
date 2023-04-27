@@ -20,7 +20,7 @@ import { checkUserStatus } from '../helper/checkUserStatus'
 const url = process.env.NEXT_PUBLIC_API_URL
 
 const Login = () => {
-	const [cookie, setCookie, cookies] = useCookies(['token'])
+	const [cookie, setCookie] = useCookies(['token'])
 	const [loading, setLoading] = useState<boolean>(false)
 	const {
 		handleSubmit,

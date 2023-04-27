@@ -1,54 +1,55 @@
-import React from 'react'
-import { Card, Text } from '@nextui-org/react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { Card, Dropdown, Text } from '@nextui-org/react'
 import { TBookMeta } from '../types'
+import { axiosInstance } from '../helper/axiosInstance'
+import toast, { Toaster } from 'react-hot-toast'
 
 interface BookPreviewProps {
 	bookData: TBookMeta
+	getUpdatedList: VoidFunction
 }
 
-// interface TBooksStatus {
-// 	selected: Set<string>
-// 	setSelected: React.Dispatch<SetStateAction<Set<string>>>
-// 	selectedItem: string
-// }
-// const BookStatus = ({ selected, setSelected, selectedItem }: TBooksStatus) => {
-// 	return (
-// 		<Dropdown>
-// 			<Dropdown.Button color='secondary' css={{ tt: 'capitalize' }} shadow>
-// 				{selectedItem}
-// 			</Dropdown.Button>
-// 			<Dropdown.Menu
-// 				aria-label='Single selection actions'
-// 				color='secondary'
-// 				disallowEmptySelection
-// 				selectionMode='single'
-// 				selectedKeys={selected}
-// 				onSelectionChange={setSelected}
-// 			>
-// 				<Dropdown.Item key='Plan To Read'>Plan To Read</Dropdown.Item>
-// 				<Dropdown.Item key='Inprogress'>Inprogress</Dropdown.Item>
-// 				<Dropdown.Item key='Completed'>Completed</Dropdown.Item>
-// 			</Dropdown.Menu>
-// 		</Dropdown>
-// 	)
-// }
+interface TBooksStatus {
+	selectedItem: string | undefined
+	handleChange: (arg: React.ChangeEvent<HTMLSelectElement>) => void
+}
+const BookStatus = ({ selectedItem, handleChange }: TBooksStatus) => {
+	return (
+		<select value={selectedItem} onChange={handleChange}>
+			<option value='Plan To Read'>Plan To Read</option>
+			<option value='Inprogress'>Inprogress</option>
+			<option value='Completed'>Completed</option>
+		</select>
+	)
+}
 
-const BookPreview = ({ bookData }: BookPreviewProps) => {
-	// const [selected, setSelected] = React.useState(new Set(['Plan To Read']))
+const BookPreview = ({ bookData, getUpdatedList }: BookPreviewProps) => {
+	const [selectedItem, setSelectedItem] = useState(bookData?.status)
 
-	// const selectedItem = React.useMemo(
-	// 	() => Array.from(selected).join(', ').replaceAll('_', ' '),
-	// 	[selected]
-	// )
+	const handleChange = useCallback(
+		async (event: React.ChangeEvent<HTMLSelectElement>) => {
+			setSelectedItem(event.target.value)
+
+			try {
+				const res = await axiosInstance.put('/books/update', {
+					id: bookData?._id,
+					status: event.target.value,
+				})
+				if (res.status === 200) {
+					toast.success(res.data.message)
+					getUpdatedList()
+				}
+			} catch (err) {
+				toast.error('Some thing went wrong!')
+			}
+		},
+		[bookData?._id, getUpdatedList]
+	)
 
 	return (
 		<Card>
 			<div className='bookStatus'>
-				{/* <BookStatus
-					selected={selected}
-					setSelected={setSelected}
-					selectedItem={selectedItem}
-				/> */}
+				<BookStatus selectedItem={selectedItem} handleChange={handleChange} />
 			</div>
 			<Card.Body css={{ p: 0, m: 0 }}>
 				<Card.Image

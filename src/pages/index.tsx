@@ -27,7 +27,7 @@ export default function Home() {
 	return (
 		<>
 			<Nav getUpdatedList={getUpdatedList} />
-			<BooksMain isUpdated={isUpdated} />
+			<BooksMain isUpdated={isUpdated} getUpdatedList={getUpdatedList} />
 		</>
 	)
 }
