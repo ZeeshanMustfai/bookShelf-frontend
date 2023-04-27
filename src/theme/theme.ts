@@ -15,7 +15,6 @@ export const lightTheme = createTheme({
       primary: "#2CC9D5",
       primaryBorder: "#2CC9D5",
       primaryBorderHover: "#167A99",
-      primarySolidHover: "#0E587B",
       primarySolidContrast: "$white",
       primaryShadow: "#2CC9D5",
 
