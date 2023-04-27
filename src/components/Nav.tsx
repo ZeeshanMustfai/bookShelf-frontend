@@ -1,11 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Navbar, Text } from '@nextui-org/react'
 import { useRouter } from 'next/router'
-import { FaRegMoon, FaSun } from 'react-icons/fa'
 import { navItems } from '../mock'
 import styles from '../styles/components/navbar.module.scss'
-import { MainContext } from '../pages/_app'
-import { ThemeContextType } from '../types'
 import { AddBookModal } from './AddBookModal'
 
 const mobileNavItem = () => {
@@ -24,7 +21,7 @@ type TNav = {
 }
 const Nav = ({ getUpdatedList }: TNav) => {
 	const router = useRouter()
-	const { theme, changeTheme } = useContext<ThemeContextType>(MainContext)
+	// const { theme, changeTheme } = useContext<ThemeContextType>(MainContext)
 	const [open, setOpen] = useState<boolean>(false)
 	const handleClose = () => {
 		setOpen(!open)
@@ -47,11 +44,11 @@ const Nav = ({ getUpdatedList }: TNav) => {
 			<Navbar.Content className='icon'>
 				<Navbar.Item onClick={() => setOpen(true)}>Add Book</Navbar.Item>
 				<Navbar.Item onClick={handleLogout}>Logout</Navbar.Item>
-				{theme === 'light' ? (
+				{/* {theme === 'light' ? (
 					<FaRegMoon onClick={() => changeTheme('dark')} />
 				) : (
 					<FaSun onClick={() => changeTheme('light')} />
-				)}
+				)} */}
 			</Navbar.Content>
 			<Navbar.Collapse>{mobileNavItem()}</Navbar.Collapse>
 
