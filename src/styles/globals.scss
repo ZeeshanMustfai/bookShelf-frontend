@@ -1,0 +1,95 @@
+
+html,
+body{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+.icon { 
+cursor: pointer;
+}
+
+:root {
+  --primary: #2cc9d5;
+  --secondary: #f594c9;
+  --success: rgb(37, 155, 37);
+  --warning: #f5a524;
+  --error: rgb(255, 67, 67);
+  --black: #222222;
+  --white: #fff;
+  --shadedwhite: #e9e9e9;
+  --gray: #454545;
+  --lightgrey: #f7f7f4;
+  --darkgrey: #dbdbdb;
+}
+
+
+.loginContainer{
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 200 auto;
+	height: 100vh;
+
+  .loginCard{
+    display: flex;
+    max-width: 400px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loginLink{
+    margin-left: 10px;
+    color: #2cc9d5; 
+  }
+  .submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.booksFilter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #454545;
+  max-height: 500px;
+  min-height: 200px;
+}
+
+.notFound{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px;
+}
+
+.sortBtn{
+  text-align: right;
+}
+.booksContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.bookStatus{
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  z-index: 10;
+}
+
+.datePreview{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%
+}
